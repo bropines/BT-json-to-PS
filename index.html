@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js" defer></script>
+    <title>JSON Importer</title>
+</head>
+<body>
+    <sp-theme theme="spectrum" color="light" scale="medium">
+        <div class="container">
+
+            <!-- ==================== ШАГ 1: Выбор файлов ==================== -->
+            <div id="step1" class="step visible">
+                <sp-heading>Шаг 1: Выбор файлов</sp-heading>
+                <sp-divider size="m"></sp-divider>
+
+                <sp-field-label for="btnSelectJson">JSON файл проекта:</sp-field-label>
+                <sp-button id="btnSelectJson" variant="primary">Обзор...</sp-button>
+                <sp-detail id="jsonPathLabel">Файл не выбран</sp-detail>
+
+                <sp-field-label for="btnSelectImageDir">Папка с изображениями:</sp-field-label>
+                <sp-button id="btnSelectImageDir" variant="primary">Обзор...</sp-button>
+                <sp-detail id="imageDirLabel">Папка не выбрана</sp-detail>
+
+                <sp-button id="btnNextToStep2" variant="cta" disabled>Далее</sp-button>
+            </div>
+
+            <!-- ==================== ШАГ 2: Выбор страниц ==================== -->
+            <div id="step2" class="step hidden">
+                <sp-heading>Шаг 2: Выбор страниц для импорта</sp-heading>
+                <sp-divider size="m"></sp-divider>
+                <sp-field-label>Отметьте страницы, которые нужно обработать:</sp-field-label>
+                <div id="pageListContainer"></div>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                     <sp-button id="btnSelectAllPages" variant="secondary">Выбрать все</sp-button>
+                     <sp-button id="btnDeselectAllPages" variant="secondary">Снять выделение</sp-button>
+                </div>
+                <sp-divider size="m"></sp-divider>
+                <div style="display: flex; justify-content: space-between;">
+                    <sp-button id="btnBackToStep1">Назад</sp-button>
+                    <sp-button id="btnNextToStep3" variant="cta" disabled>Далее</sp-button>
+                </div>
+            </div>
+
+            <!-- ==================== ШАГ 3: Настройки импорта ==================== -->
+            <div id="step3" class="step hidden">
+                <sp-heading>Шаг 3: Настройки импорта</sp-heading>
+                <sp-divider size="m"></sp-divider>
+
+                <sp-field-label>Что импортировать:</sp-field-label>
+                <div class="checkbox-group">
+                    <sp-checkbox id="chkImportOriginal" checked>Оригинальный текст</sp-checkbox>
+                    <sp-checkbox id="chkImportTranslation">Перевод (если есть)</sp-checkbox>
+                </div>
+                <sp-divider size="s"></sp-divider>
+
+                <sp-field-label>Настройки форматирования:</sp-field-label>
+                 <div class="checkbox-group">
+                    <sp-checkbox id="chkUseJsonFormatting" checked>Использовать форматирование из JSON (если доступно)</sp-checkbox>
+                    <sp-checkbox id="chkOverrideFontSize">Переопределить размер шрифта значением ниже</sp-checkbox>
+                </div>
+                <sp-divider size="s"></sp-divider>
+
+                <sp-field-label>Настройки по умолчанию (или при переопределении):</sp-field-label>
+                <sp-button id="btnGetStyle" variant="secondary" quiet style="margin-bottom: 10px;">Взять стиль с активного текстового слоя</sp-button>
+
+                 <sp-field-label for="fontPicker">Шрифт:</sp-field-label>
+                 <sp-picker id="fontPicker" style="width: 100%;">
+                      <sp-menu-item value="MyriadPro-Regular">Myriad Pro Regular (Default)</sp-menu-item>
+                 </sp-picker>
+
+                <!-- Убедимся, что ID верный и элемент есть -->
+                <sp-field-label for="fontSizeInput">Размер (pt):</sp-field-label>
+                <sp-number-field id="fontSizeInput" value="12" min="1"></sp-number-field>
+
+                 <sp-field-label for="fontColorInput">Цвет:</sp-field-label>
+                 <input type="color" id="fontColorInput" value="#000000" style="width: 100%; max-width: 150px; height: 32px; box-sizing: border-box; border: 1px solid var(--spectrum-gray-400); border-radius: 4px; padding: 0 5px;">
+
+                 <sp-field-label for="alignmentPicker">Выравнивание:</sp-field-label>
+                 <sp-picker id="alignmentPicker" value="left" style="width: 100%;">
+                    <sp-menu-item value="left">По левому краю</sp-menu-item>
+                    <sp-menu-item value="center">По центру</sp-menu-item>
+                    <sp-menu-item value="right">По правому краю</sp-menu-item>
+                    <sp-menu-item value="leftJustified">По ширине (посл. строка влево)</sp-menu-item>
+                    <sp-menu-item value="centerJustified">По ширине (посл. строка по центру)</sp-menu-item>
+                    <sp-menu-item value="rightJustified">По ширине (посл. строка вправо)</sp-menu-item>
+                    <sp-menu-item value="fullyJustified">По ширине (все строки)</sp-menu-item>
+                 </sp-picker>
+
+                <sp-divider size="m"></sp-divider>
+                 <div style="display: flex; justify-content: space-between;">
+                    <sp-button id="btnBackToStep2">Назад</sp-button>
+                    <sp-button id="btnStartImport" variant="cta">Начать импорт</sp-button>
+                 </div>
+            </div>
+
+            <!-- ==================== Область статуса ==================== -->
+            <div id="statusContainer" style="display: none;">
+                 <sp-divider size="m"></sp-divider>
+                 <sp-label>Статус:</sp-label>
+                 <div id="statusArea">Готов</div>
+            </div>
+
+        </div>
+    </sp-theme>
+</body>
+</html>

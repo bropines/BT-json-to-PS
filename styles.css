@@ -1,0 +1,144 @@
+/* styles.css */
+
+/* Общие стили для панели */
+sp-body {
+  padding: 15px; /* Немного увеличим отступ */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Увеличим основной разрыв */
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Пространство между шагами и статус баром */
+}
+
+/* Стили для каждого шага */
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Пространство внутри шага */
+  padding: 15px;
+  border: 1px solid var(--spectrum-gray-300); /* Чуть темнее граница */
+  border-radius: 5px;
+  background-color: var(--spectrum-gray-100); /* Легкий фон для шагов */
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: flex; /* Убедимся, что flex применяется */
+}
+
+/* Заголовки шагов */
+.step sp-heading {
+  margin-bottom: 5px; /* Небольшой отступ после заголовка */
+}
+
+/* Контейнер списка страниц */
+#pageListContainer {
+  max-height: 200px; /* Можно чуть больше */
+  min-height: 80px; /* Минимальная высота */
+  overflow-y: auto;
+  border: 1px solid var(--spectrum-gray-400);
+  background-color: var(--spectrum-gray-50); /* Легкий фон для списка */
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Стили для чекбоксов в списке страниц */
+#pageListContainer sp-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  /* Добавим немного отступа снизу для читаемости */
+  /* padding-bottom: 2px; */
+}
+
+/* Группы чекбоксов в настройках */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Немного больше разрыв */
+  margin-bottom: 8px;
+  margin-left: 5px; /* Небольшой отступ группы */
+}
+
+/* Лейблы для полей ввода */
+sp-field-label {
+  margin-top: 5px; /* Отступ сверху перед лейблом */
+}
+
+/* Стандартные кнопки */
+sp-button {
+  margin-top: 8px; /* Увеличим отступ кнопок */
+}
+
+/* Кнопка "Взять стиль" - менее заметная */
+#btnGetStyle {
+  align-self: flex-start; /* Кнопка не растягивается */
+  margin-bottom: 10px;
+}
+
+/* Поле ввода размера шрифта */
+sp-number-field {
+  max-width: 120px; /* Ограничим ширину */
+}
+
+/* Поле выбора цвета */
+#fontColorInput {
+  min-height: 32px;
+  max-width: 120px; /* Ограничим ширину */
+  padding: 0 5px;
+  box-sizing: border-box;
+  border: 1px solid var(--spectrum-gray-500); /* Сделаем рамку виднее */
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Выпадающие списки */
+sp-picker {
+   margin-bottom: 5px; /* Небольшой отступ снизу */
+}
+
+/* Текстовые детали (пути к файлам) */
+sp-detail {
+  font-style: italic;
+  color: var(--spectrum-gray-700);
+  word-break: break-all;
+  margin-top: -5px; /* Уменьшим отступ после кнопки */
+  margin-bottom: 5px; /* Добавим отступ снизу */
+}
+
+/* Контейнер статуса */
+#statusContainer {
+  margin-top: 15px;
+}
+
+/* Область статуса */
+#statusArea {
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid var(--spectrum-gray-400);
+  min-height: 80px;
+  max-height: 250px;
+  overflow-y: auto;
+  font-size: var(--spectrum-font-size-75);
+  white-space: pre-wrap;
+  word-break: break-word;
+  background-color: var(--spectrum-gray-75); /* Фон для статус бара */
+  border-radius: 3px;
+  line-height: 1.5; /* Улучшим читаемость логов */
+}
+
+/* Отступы для разделителей */
+sp-divider {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

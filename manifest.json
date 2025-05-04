@@ -1,0 +1,40 @@
+{
+  "id": "BT-JSON-Importer",
+  "name": "BallonTranslator proj Importer",
+  "version": "1.0.0",
+  "main": "index.html",
+  "manifestVersion": 5,
+  "host": [
+      {
+          "app": "PS",
+          "minVersion": "23.5.0"
+      }
+  ],
+  "entrypoints": [
+      {
+          "type": "panel",
+          "id": "jsonImporterPanel",
+          "label": {
+              "default": "JSON Importer"
+          },
+          "minimumSize": {"width": 400, "height": 470},
+          "maximumSize": {"width": 500, "height": 600},
+          "preferredDockedSize": {"width": 230, "height": 350},
+          "icons": [
+              {"width": 23, "height": 23, "path": "icons/dark.png", "scale": [1, 2], "theme": ["darkest", "dark", "medium"]},
+              {"width": 23, "height": 23, "path": "icons/light.png", "scale": [1, 2], "theme": ["lightest", "light"]}
+          ]
+      }
+  ],
+  "icons": [
+      {"width": 23, "height": 23, "path": "icons/dark.png", "scale": [1, 2], "theme": ["darkest", "dark", "medium"]},
+      {"width": 23, "height": 23, "path": "icons/light.png", "scale": [1, 2], "theme": ["lightest", "light"]}
+  ],
+  "requiredPermissions": {
+      "localFileSystem": "fullAccess"
+  },
+   "featureFlags": {
+      "enableMenuItem": true,
+      "enableManifestV5": true
+  }
+}
